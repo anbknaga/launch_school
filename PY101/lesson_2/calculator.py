@@ -5,7 +5,7 @@
 # Print the operation
 
 def prompt(message):
-    print(f"===> {message}")
+    print(f"==> {message}")
 
 def invalid_number(number_str):
     try:
@@ -15,46 +15,37 @@ def invalid_number(number_str):
 
     return False
 
-prompt("THE CALCULATOR\n")
+prompt('Welcome to Calculator!')
 
 prompt("What's the first number?")
 number1 = input()
 
 while invalid_number(number1):
-    prompt("Hmmm... this is not a valid number")
+    prompt("Hmm... that doesn't look like a valid number.")
     number1 = input()
 
-prompt("Enter the second number: ")
+prompt("What's the second number?")
 number2 = input()
 
 while invalid_number(number2):
     prompt("Hmm... that doesn't look like a valid number.")
     number2 = input()
 
-operation = input("\nFollowing operations are supported in this calculator: "
-                  "       \n'A' - Addition"
-                  "       \n'S' - Subtraction"
-                  "       \n'M' - Multiplication"
-                  "       \n'D' - Division\n"
-                  "Enter here: ").lower() # case insensitivity is handled here
+prompt("What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide")
+operation = input()
 
-while operation not in ["a", "s", "m", "d"]:
-    prompt("select only from the given options: a, s, m, d: ")
+while operation not in ["1", "2", "3", "4"]:
+    prompt("You must choose 1, 2, 3, or 4")
     operation = input()
 
-# Performing calculations
-
 match operation:
-    case 'a':
+    case "1":
         output = int(number1) + int(number2)
-
-    case 's':
+    case "2":
         output = int(number1) - int(number2)
-
-    case 'm':
+    case "3":
         output = int(number1) * int(number2)
-
-    case 'd':
+    case "4":
         output = int(number1) / int(number2)
 
-print(f"\nThe output of the operation is {output}\n")
+prompt(f"The result is {output}")
