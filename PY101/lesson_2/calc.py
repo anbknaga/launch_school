@@ -67,7 +67,7 @@ while RE_RUN not in ['n', 'no', 'nah'] or RE_RUN in ['yes', 'y', 'yeah']:
             "'tm' for Tamil\n"
             "'hi' for Hindi\n"
             "Choose your preferred language: ")
-    lang = input()
+    lang = input().lower()
 
     while lang not in language:
         message("Invalid selection. Select from 'en', 'tm', 'hi'")
