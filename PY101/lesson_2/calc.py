@@ -1,91 +1,115 @@
-# X Ask the user for the first number
-# X Ask the user for the second number
-# X Ask the user for the operation they would like to perform
-# X Perform the operation
-# X Print the result
+import math
+import json
+import os
+
+language = ['en', 'tm', 'hi']
+RE_RUN = 'y'
+
+# Opening the JSON file for reading
+with open('calculator_messages.json', 'r') as file:
+    data = json.load(file) # 'data' contains the contents of the JSON file
 
 def message(prompt):
+    # Printing the messages
     print("==> " + prompt)
 
-# Logic for finding if a number is valid or not
 def invalid_number(number):
+    # Logic for finding whether a number is valid
     try:
         float(number)
+        return check_invalid_numerical(number)
     except ValueError:
         return True
 
+def check_invalid_numerical(number):
+    # Check of invalid numerical inputs such as NaN or inf
+    if math.isnan(float(number)) or math.isinf(float(number)):
+        return True
     return False
 
-RE_RUN = 'y'
+def calculate(oprn, no1, no2, langs):
+    # Defining function for calculator operations
+    try:
+        match oprn:
+            case "1":
+                answer = round((float(no1) + float(no2)), 2)
+                op_name = "addition"
+            case "2":
+                answer = round((float(no1) - float(no2)), 2)
+                op_name = "subtraction"
+            case "3":
+                answer = round((float(no1) * float(no2)), 2)
+                op_name = "multiplication"
+            case "4":
+                if float(no2) == 0:
+                    raise ZeroDivisionError
+                answer = round((float(no1) / float(no2)), 2)
+                op_name = "division"
 
+    except ZeroDivisionError:
+        return message(data[langs]["zero_division_error"])
+
+    output = data[langs]['output_ans'].format(op_name=op_name, answer=answer)
+    return message(output)
+
+def clear_screen():
+    # Clearing the screen
+    if os.name == 'nt':
+        os.system('cls') # For windows
+    else:
+        os.system('clear') # For mac OS & Unix
+
+# Calculator begins
 while RE_RUN not in ['n', 'no', 'nah'] or RE_RUN in ['yes', 'y', 'yeah']:
 
-    message("THE CALCULATOR <==\n")
+    message("Supported languages for the calculator:\n"
+            "'en' for English\n"
+            "'tm' for Tamil\n"
+            "'hi' for Hindi\n"
+            "Choose your preferred language: ")
+    lang = input()
 
-    message("Enter the value for the first number: ")
+    while lang not in language:
+        message("Invalid selection. Select from 'en', 'tm', 'hi'")
+        lang = input()
+
+    message(data[lang]["welcome"]) # Welcome message
+
+    message(data[lang]["input_first_number"])
     number1 = input()
 
     # Checks if the input is valid otherwise prompts for a new input
     while invalid_number(number1):
-        message("Please enter a valid number for the first number")
+        message(data[lang]["invalid_number1"])
         number1 = input()
 
-    message("Enter the value for the second number: ")
+    message(data[lang]["input_second_number"])
     number2 = input()
 
     # Checks if the input is valid otherwise prompts for a new input
     while invalid_number(number2):
-        message("Please enter a valid number for the second number")
+        message(data[lang]["invalid_number2"])
         number2 = input()
 
     # Asking the user for what operation they would like to perform
 
-    message("Menu:\n"
-            "1. Add\n"
-            "2. Subtract\n"
-            "3. Multiply\n"
-            "4. Divide\n"
-            "Select a number from the menu: ")
-
+    message(data[lang]["valid_operations"])
     operation = input()
 
     while operation not in ['1', '2', '3', '4']:
-        message("Invalid input.\n"
-            "1. Add\n"
-            "2. Subtract\n"
-            "3. Multiply\n"
-            "4. Divide\n"
-            "Select a number from the menu: ")
+        message(data[lang]["invalid_operation"])
         operation = input()
 
-    #Performing the operation
+    calculate(operation, number1, number2, lang) # Call calc fn.
 
-    match operation:
-        case "1":
-            answer = float(number1) + float(number2)
-            answer = round(answer, 2)
-            OP_NAME = "addition"
-            message(f"\nThe result of the {OP_NAME} operation is {answer}\n")
-        case "2":
-            answer = float(number1) - float(number2)
-            OP_NAME = "subtraction"
-            message(f"\nThe result of the {OP_NAME} operation is {answer}\n")
-        case "3":
-            answer = float(number1) * float(number2)
-            OP_NAME = "multiplication"
-            message(f"\nThe result of the {OP_NAME} operation is {answer}\n")
-        case "4":
-            try:
-                answer = float(number1) / float(number2)
-                answer = round(answer, 2)
-                OP_NAME = "division"
-                message(f"\nThe result of the {OP_NAME} is {answer}\n")
-            except ZeroDivisionError:
-                print("Cannot divide by zero")
-
-    RE_RUN = input("Do you want to calculate again? (y/n): ").lower()
+# Asking if the user needs to use the calculator again
+    message(data[lang]["calculate_again"])
+    RE_RUN = input().lower()
     while RE_RUN not in ['n', 'no', 'nah', 'yes', 'y', 'yeah']:
-        message("Invalid input. Enter 'y' or 'n': ")
-        RE_RUN = input()
+        message(data[lang]["invalid_re_run_input"])
+        RE_RUN = input().lower()
+
+    clear_screen() # Clears the terminal screen for new calculation
+
     if RE_RUN in ['n', 'no', 'nah']:
-            message("Thank you for using the calculator :) See you again soon")
+        message(data[lang]["thank_you"])

@@ -1,0 +1,45 @@
+{
+    "en" : {
+        "welcome" : "THE CALCULATOR <==\n",
+        "input_first_number" : "Enter the value for the first number: ",
+        "invalid_number1" : "Please enter a valid number for the first number",
+        "input_second_number" : "Enter the value for the second number:  ",
+        "invalid_number2" : "Please enter a valid number for the second number",
+        "valid_operations" : "Menu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n\nSelect a number to perform the calculator operation: ",
+        "invalid_operation" : "Invalid input. Please select options from 1, 2, 3, or 4 from the menu: ",
+        "invalid_re_run_input" : "Invalid input. Enter 'y' or 'n':",
+        "thank_you" : "Thank you for using the calculator :) See you again soon\n",
+        "output_ans" : "\nThe result of the {op_name} is {answer}",
+        "output_ans1" : "operation is ",
+        "zero_division_error" : "Cannot divide by zero",
+        "calculate_again" : "Do you want to calculate again (y/n)?: "
+    },
+    "tm" : {
+        "welcome" : "கால்குலேட்டர் <==\n",
+        "input_first_number" : "முதல் எண்ணுக்கான மதிப்பை உள்ளிடவும்: ",
+        "invalid_number1" : "முதல் எண்ணுக்கு சரியான எண்ணை உள்ளிடவும்",
+        "input_second_number" : "இரண்டாவது எண்ணுக்கான மதிப்பை உள்ளிடவும்: ",
+        "invalid_number2" : "இரண்டாவது எண்ணுக்கு சரியான எண்ணை உள்ளிடவும்",
+        "valid_operations" : "மெனு:\n1. கூடுதல்\n2. கழித்தல்\n3. பெருக்கல்\n4. பிரிவு\n\nகால்குலேட்டர் செயல்பாட்டைச் செய்ய எண்ணைத் தேர்ந்தெடுக்கவும்: ",
+        "invalid_operation" : "தவறான உள்ளீடு. மெனுவிலிருந்து 1, 2, 3 அல்லது 4 இலிருந்து விருப்பங்களைத் தேர்ந்தெடுக்கவும்: ",
+        "invalid_re_run_input" : "தவறான உள்ளீடு. 'y' அல்லது 'n' ஐ உள்ளிடவும்: ",
+        "thank_you" : "கால்குலேட்டரைப் பயன்படுத்தியதற்கு நன்றி :) மீண்டும் சந்திப்போம்\n",
+        "output_ans" : "\n{op_name} செயல்பாட்டின் முடிவு {answer}\n",
+        "zero_division_error" : "பூஜ்ஜியத்தால் வகுக்க முடியாது",
+        "calculate_again" : "மீண்டும் கணக்கிட வேண்டுமா? (y/n)"
+    },
+    "hi" : {
+        "welcome" : "कैलकुलेटर <==\n",
+        "input_first_number" : "पहले नंबर का मान दर्ज करें: ",
+        "invalid_number1" : "कृपया पहले नंबर के लिए एक वैध नंबर दर्ज करें",
+        "input_second_number" : "दूसरे नंबर का मान दर्ज करें:  ",
+        "invalid_number2" : "कृपया दूसरे नंबर के लिए वैध नंबर दर्ज करें",
+        "valid_operations" : "मेन्यू:\n1. जोड़ना\n2. घटाव\n3. गुणा\n4. विभाजन\n\nकैलकुलेटर ऑपरेशन करने के लिए एक नंबर चुनें: ",
+        "invalid_operation" : "अमान्य इनपुट। कृपया मेनू से 1, 2, 3, या 4 में से विकल्प चुनें: ",
+        "invalid_re_run_input" : "अमान्य इनपुट. 'y' या 'n' दर्ज करें:",
+        "thank_you" : "कैलकुलेटर का उपयोग करने के लिए धन्यवाद :) जल्द ही आपसे फिर मुलाकात होगी\n",
+        "output_ans" : "\n{op_name} ऑपरेशन का परिणाम {answer} है\n",
+        "zero_division_error" : "शून्य से विभाजित नहीं किया जा सकता",
+        "calculate_again" : "क्या आप पुनः गणना करना चाहते हैं? (y/n)"
+    }
+}
