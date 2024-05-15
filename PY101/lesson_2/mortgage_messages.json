@@ -8,9 +8,10 @@
         "get_loan_duration": "Enter loan duration in years",
         "invalid_number" : "Please enter a valid number greater than zero (0): ",
         "calculate_again" : "Do you want to use the calculator again? (y/n): ",
-        "goodbye" : "Thank you for using mortgage calculator",
+        "goodbye" : "Thank you for using mortgage calculator\n",
         "invalid_re_run_input" : "Invalid input. Enter 'y' or 'n': ",
-        "result" : "The monthly mortgage payment for ${loan_amount} loan amount at an annual interest rate of {annual_rate}% for {loan_dur_year} years is ${monthly_payment}"
+        "result" : "The monthly mortgage payment for ${loan_amount} loan amount at an annual interest rate of {annual_rate}% for {loan_dur_year} years is ${monthly_payment}\n",
+        "ZeroDivisionError" : "Calculation not possible. Cannot divide by zero\n"
     }, 
     "tm" : {
         "intro" : "அடமானக் கால்குலேட்டருக்கு வருக <===\n",
@@ -21,8 +22,9 @@
         "get_loan_duration": "ஆண்டுகளில் கடன் காலத்தை உள்ளிடவும்: ",
         "invalid_number" : "தயவுசெய்து பூஜ்ஜியத்தை விட (0) அதிகமான செல்லுபடியாகும் எண்ணை உள்ளிடவும்: ",
         "calculate_again" : "மீண்டும் கால்குலேட்டரைப் பயன்படுத்த விரும்புகிறீர்களா? (y/n): ",
-        "goodbye" : "அடமானக் கால்குலேட்டரைப் பயன்படுத்தியதற்கு நன்றி",
+        "goodbye" : "அடமானக் கால்குலேட்டரைப் பயன்படுத்தியதற்கு நன்றி\n",
         "invalid_re_run_input" : "தவறான உள்ளீடு. 'y' அல்லது 'n' ஐ உள்ளிடவும்: ",
-        "result" : "மாதாந்திர அடமானக் கட்டணம் ${loan_amount} வருடாந்திர வட்டி விகிதத்தில் கடன் தொகை {annual_rate}% க்கான {loan_dur_year} ஆண்டுகள் ஆகும் ${monthly_payment}"
+        "result" : "மாதாந்திர அடமானக் கட்டணம் ${loan_amount} வருடாந்திர வட்டி விகிதத்தில் கடன் தொகை {annual_rate}% க்கான {loan_dur_year} ஆண்டுகள் ஆகும் ${monthly_payment}\n",
+        "ZeroDivisionError" : "பூஜ்ஜியத்தால் வகுக்க முடியாது"
     }
 }

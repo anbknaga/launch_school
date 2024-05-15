@@ -48,7 +48,7 @@ def get_inputs(langs, input_text):
 
     while not is_valid(input_value):
          # Checks if the input is valid otherwise prompts for a new input
-        messages(data[lang]["invalid_number"])
+        messages(data[langs]["invalid_number"])
         input_value = input()
 
     return float(input_value)
@@ -75,7 +75,7 @@ def get_annual_rate_input(langs, input_text):
 
     while not valid_annual_rate(arr_input):
          # Checks if the input is valid otherwise prompts for a new input
-        messages(data[lang]["invalid_number"])
+        messages(data[langs]["invalid_number"])
         arr_input = input()
 
     return float(arr_input)
@@ -84,14 +84,21 @@ def mortgage_calculation(loan_dur_year, annual_rate, loan_amount):
     loan_dur_months = (loan_dur_year) * 12
     annual_rate = (annual_rate) / 100
     monthly_rate = (annual_rate) / 12
-    monthly_payment = (loan_amount) * (
-        monthly_rate / (1 - (1 + (monthly_rate)) ** ((-loan_dur_months)))
-        )
-    return monthly_payment
+    try:
+        monthly_payment = (loan_amount) * (
+            monthly_rate / (1 - (1 + (monthly_rate)) ** ((-loan_dur_months)))
+            )
+        return monthly_payment
+    except ZeroDivisionError:
+        monthly_payment = loan_amount / loan_dur_months
+        return monthly_payment
 
-def display_results(langs, monthly_payment, loan_amount, annual_rate, loan_dur_year):
+def display_results(langs, monthly_payment, loan_amount,
+                    annual_rate, loan_dur_year):
     output = data[langs]['result']
-    output = output.format(monthly_payment=monthly_payment, loan_amount=loan_amount, annual_rate=annual_rate, loan_dur_year=loan_dur_year)
+    output = output.format(monthly_payment=monthly_payment,
+                           loan_amount=loan_amount, annual_rate=annual_rate,
+                           loan_dur_year=loan_dur_year)
     messages(output)
 
 def calculate_again(langs):
@@ -120,10 +127,11 @@ def main():
         loan_dur_year = get_inputs(lang, 'get_loan_duration')
     # This is where the monthly payment calculation goes
         monthly_payment = mortgage_calculation(
-            loan_dur_year, annual_rate, loan_amount
-            )
-        monthly_payment = round(monthly_payment, 2)
-        display_results(lang, monthly_payment, loan_amount, annual_rate, loan_dur_year)
+            loan_dur_year, annual_rate, loan_amount)
+        if monthly_payment is not None:
+            monthly_payment = round(monthly_payment, 2)
+            display_results(lang, monthly_payment, loan_amount,
+                            annual_rate, loan_dur_year)
 
         if not calculate_again(lang):
             break
